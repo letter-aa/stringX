@@ -12,28 +12,43 @@ namespace stringX {
 	void replace(string& mainString, string stringToReplace, string stringToReplaceWith, int findNthOccurrence) { //if 4th param is null (0), will replace first instance of string
 		mainString.replace(mainString.find(stringToReplace, findNthOccurrence), stringToReplace.size(), stringToReplaceWith);
 	}
-	void splitString(string mainString, vector<string> &vec, string stringToSplitWith) {
-        int fPos = 0;
-        int lPos = mainString.find(stringToSplitWith);
-        while (lPos != string::npos){
-            vec.push_back(mainString.substr(fPos,lPos - fPos));
-            fPos = lPos + stringToSplitWith.size();
-            lPos = mainString.find(stringToSplitWith,fPos);
-        }
-        vec.push_back(mainString.substr(fPos));
-    }
-    int numOfStr(string mainString, string strToCount){
-        int amount = 0;
-	    string tempMain = mainString;
-	    while(tempMain.find(strToCount) != string::npos){
-	        //cout << mainString;
-	        if(string(1, tempMain[0]) == strToCount){
-	            tempMain = tempMain.substr(1);
-	            amount++;
-	        } else {
-	            tempMain = tempMain.substr(1);
-	        }
-	    }
-	    return amount;
-    }
+	void splitString(string mainString, vector<string>& vec, string stringToSplitWith) {
+		int fPos = 0;
+		int lPos = mainString.find(stringToSplitWith);
+		while (lPos != string::npos) {
+			vec.push_back(mainString.substr(fPos, lPos - fPos));
+			fPos = lPos + stringToSplitWith.size();
+			lPos = mainString.find(stringToSplitWith, fPos);
+		}
+		vec.push_back(mainString.substr(fPos));
+	}
+	int numOfStr(string mainString, string strToCount) {
+		int amount = 0;
+		string tempMain = mainString;
+		while (tempMain.find(strToCount) != string::npos) {
+			//cout << mainString;
+			if (string(1, tempMain[0]) == strToCount) {
+				tempMain = tempMain.substr(1);
+				amount++;
+			}
+			else {
+				tempMain = tempMain.substr(1);
+			}
+		}
+		return amount;
+	}
+	bool isnum(string mainString) {
+		return mainString.find_first_not_of("0123456789") == string::npos;
+	}
+	void removeNonInt(string& mainString) {
+		int pos = 0;
+		string tempMain = "";
+		while (pos != mainString.size()) {
+			if (isnum(string(1, mainString[pos]))) {
+				tempMain.append(string(1,mainString[pos]));
+			}
+			pos++;
+		}
+		mainString = tempMain;
+	}
 }
