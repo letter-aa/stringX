@@ -51,4 +51,34 @@ namespace stringX {
 		}
 		mainString = tempMain;
 	}
+        void reverse(std::string & string) {
+	    std::string ts;
+	    for (int i = 0; i < string.size(); i++) {
+	        ts += string[string.size() - 1 - i]; // size - 1 cuz size returns starting from 1 but index starts from 0 so ye
+	    }
+	    string = ts;
+	}
+	void encrypt(std::string& data) {
+	    std::string td;
+	    for (int i = 0; i < data.size(); i++) {
+	        char fc = data[i];
+	        int sc = (int)fc;
+	        std::string ti = std::to_string(sc - 1);
+	        int tioti = std::stoi(ti);
+	        td += (char)tioti;
+	    }
+	    reverse(td);
+	    data = td;
+	}
+	void decrypt(std::string& data) {
+	    std::string td;
+	    for (int i = 0; i < data.size(); i++) {
+	        int fc = (int)data[i];
+	        std::string ti = std::to_string(fc + 1);
+	        int tioti = std::stoi(ti);
+	        td += (char)tioti;
+	    }
+	    reverse(td);
+	    data = td;
+	}
 }
