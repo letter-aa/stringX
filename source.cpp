@@ -81,4 +81,10 @@ namespace stringX {
 	    reverse(td);
 	    data = td;
 	}
+	std::string bettercin() {
+	    std::string data;
+	    std::cin.ignore();
+	    std::getline(std::cin, data);
+	    return data;
+	}
 }
