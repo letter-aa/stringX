@@ -10,7 +10,18 @@ namespace stringX {
 		}
 	}
 	void replace(string& mainString, string stringToReplace, string stringToReplaceWith, int findNthOccurrence) { //if 4th param is null (0), will replace first instance of string
-		mainString.replace(mainString.find(stringToReplace, findNthOccurrence), stringToReplace.size(), stringToReplaceWith);
+		int inc = 0;
+		int nth = mainString.find(stringToReplace);
+		while (nth != string::npos) {
+			if (inc == findNthOccurrence) {
+				break;
+			}
+			else {
+				nth = mainString.find(stringToReplace, nth + stringToReplace.size());
+				inc++;
+			}
+		}
+		mainString.replace(nth, stringToReplace.size(), stringToReplaceWith);
 	}
 	void splitString(string mainString, vector<string>& vec, string stringToSplitWith) {
 		int fPos = 0;
