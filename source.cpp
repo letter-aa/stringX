@@ -37,14 +37,8 @@ namespace stringX {
 		int amount = 0;
 		string tempMain = mainString;
 		while (tempMain.find(strToCount) != string::npos) {
-			//cout << mainString;
-			if (string(1, tempMain[0]) == strToCount) {
-				tempMain = tempMain.substr(1);
-				amount++;
-			}
-			else {
-				tempMain = tempMain.substr(1);
-			}
+			amount++;
+			replace(tempMain, strToCount, "", NULL);
 		}
 		return amount;
 	}
@@ -91,11 +85,5 @@ namespace stringX {
 	    }
 	    reverse(td);
 	    data = td;
-	}
-	std::string bettercin() {
-	    std::string data;
-	    std::cin.ignore();
-	    std::getline(std::cin, data);
-	    return data;
 	}
 }
