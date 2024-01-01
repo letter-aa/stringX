@@ -33,14 +33,11 @@ namespace stringX {
 		}
 		vec.push_back(mainString.substr(fPos));
 	}
-	int numOfStr(string mainString, string strToCount) {
-		int amount = 0;
-		string tempMain = mainString;
-		while (tempMain.find(strToCount) != string::npos) {
-			amount++;
-			replace(tempMain, strToCount, "", NULL);
-		}
-		return amount;
+	int numofstr(string main, string numOf) {
+	    int find = -1;
+	    int j = 0;
+	    while ((find = main.find(numOf, find + 1)) != string::npos) j++;
+	    return j;
 	}
 	bool isnum(string mainString) {
 		return mainString.find_first_not_of("0123456789") == string::npos;
